@@ -1,0 +1,13 @@
+{
+  "name": "timestack",
+  "version": "0.0.1",
+  "author": "Isaac Cambron",
+  "dependencies": {
+    "moment": "1.7",
+    "twix": "*"
+  },
+  "devDependencies": {
+    "mocha" : "0.8.x",
+    "uglify-js" : "1.2.5"
+  }
+}

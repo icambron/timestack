@@ -1,0 +1,28 @@
+ ul.timestack-events {
+     list-style-type: none;
+     margin: 0;
+     padding: 0 0 20px 0;
+ }
+
+ ul.timestack-events li {
+     -webkit-border-radius: 11px;
+     -moz-border-radius: 11px;
+     border-radius: 11px;
+     border: 1px solid #ddd;
+     color: #707070;
+     font-size: 1.2em;
+     font-weight: bold;
+     margin-bottom: 6px;
+     padding: 3px 0;
+     position: relative;
+     text-align: center;
+     cursor: pointer;
+ }
+
+
+ ul.timestack-events li em {
+     color: #aaa;
+     font-weight: normal;
+     font-size: 0.9em;
+ }
+
