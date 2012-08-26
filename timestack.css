@@ -13,7 +13,7 @@
      font-size: 1.2em;
      font-weight: bold;
      margin-bottom: 6px;
-     padding: 3px 0;
+     padding: 10px;
      position: relative;
      text-align: center;
      cursor: pointer;
@@ -25,4 +25,23 @@
      font-weight: normal;
      font-size: 0.9em;
  }
+ul.intervals {
+   list-style-type: none;
+   padding: 0;
+   display: block;
+}
 
+ul.intervals li {
+   border-right: 1px solid #ccc;
+   color: #999;
+   float: left;
+   font-size: 1.2em;
+   margin: 0;
+   padding: 15px 0;
+   text-align: center;
+   width: 14.17%;
+}
+
+ul.intervals li.first {
+   border-left: 1px solid #ccc;
+}

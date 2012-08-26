@@ -7,22 +7,46 @@
     <link rel='stylesheet' type='text/css' href='../timestack.css'/>
     <script>
       $(function(){
-        $("#someid").timestack();
+        $('#timeline').timestack({
+          click: function(data){
+            $('#title').text(data.title);
+            $('#dates').text(data.timeDisplay);
+            $('#content').empty().append(data.content);
+          }
+        });
       });
     </script>
-  </head>
+    <style>
+      #display {
+        padding-top: 10px;
+        clear: both;
+      }
+    </style>
   <body>
-    <div id='someid'>
+    <div id='timeline'>
       <ul>
         <li data-start='5/25/1982' data-end='5/25/1986' data-title='I am a toddler'>
-          <h1>This is aribtrary HTML</h1>
+          <div>
+            <p>
+              <span>This is the content of the LI. It can be arbitary HTML, including other lists:</span>
+             <ul>
+               <li> Like this one.</li>
+             </ul>
+            </p>
+          </div>
         </li>
         <li data-start='10/14/1983' data-end='10/14/1987' data-title='My brother is a toddler' data-color='#99FF66'>
-          <ul>
-            <li>Pooping</li>
-            <li>Yelling</li>
-          </ul>
+          <p>You can put in colors using the data-color attribute.</p>
         </li>
-    </ul>
+        <li data-start='5/25/1982' data-title='I am alive'>
+          <p>You don't need an end date. Timestack treats the date as now, but doesn't display the time.</p>
+        </li>
+      </ul>
+    </div>
+    <div id='display'>
+      <h1 id='title'></h1>
+      <h3 id='dates'></h3>
+      <div id='content'/>
+    </div>
   </body>
 </html>
