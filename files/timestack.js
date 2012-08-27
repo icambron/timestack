@@ -74,7 +74,9 @@
             return i;
           });
           earliest.startOf(options.span);
-          latest.endOf(options.span);
+          if (latest.valueOf() !== latest.clone().startOf(options.span).valueOf()) {
+            latest.endOf(options.span);
+          }
           diff = latest - earliest;
           for (_i = 0, _len = items.length; _i < _len; _i++) {
             i = items[_i];

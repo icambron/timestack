@@ -62,7 +62,9 @@ do (jQuery) ->
           i
 
         earliest.startOf options.span
-        latest.endOf options.span
+        unless latest.valueOf() == latest.clone().startOf(options.span).valueOf()
+          latest.endOf options.span
+
 
         diff = latest - earliest
 

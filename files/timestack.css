@@ -28,6 +28,7 @@ ul.timestack-events li em {
 ul.intervals {
   list-style-type: none;
   padding: 0;
+  margin: 0;
   display: block;
 }
 ul.intervals li {
