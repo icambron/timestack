@@ -51,9 +51,9 @@ Timestack relies on [moment.js](http://momentjs.com/) and [jQuery](http://jquery
 
 {% highlight html %}
 <script src='http://code.jquery.com/jquery-1.8.0.min.js'></script>
-<script src='https://raw.github.com/timrwood/moment/1.7.0/min/moment.min.js'></script>
-<script src='https://raw.github.com/icambron/timestack/master/files/timestack.min.js'></script>
-<link rel='stylesheet' type='text/css' href='https://raw.github.com/icambron/timestack/master/files/timestack.css'/>
+<script src='http://icambron.github.com/timestack/files/moment.min.js'></script>
+<script src='http://icambron.github.com/timestack/files/timestack.min.js'></script>
+<link rel='stylesheet' type='text/css' href='http://icambron.github.com/timestack/files/timestack.css'>
 {% endhighlight %}
 
 Then you're good to go! You can read the docs below, or just check out the <a href='tutorial.html'>tutorial</a>.
