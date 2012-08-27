@@ -230,3 +230,8 @@ Notice the more subtle formatting. You can see a full example of this [here](htt
 Timestack isn't very defensive with its inputs and it's a little too
 easy to break the page by not specifying things correctly. I'm working
 on that.
+
+##Credits
+
+Much of the inspiration and CSS comes from Matt Bango's [Pure CSS
+Timeline](http://mattbango.com/notebook/web-development/pure-css-timeline/). This would have taken a lot longer and looked a lot worse without his work. There's also Tim Wood's excellent [Moment](http://momentjs.com/) library, which made this a lot easier to build. I'd also like to thank Bota Box Wine, because I drank like eight glasses of it while I wrote this.
