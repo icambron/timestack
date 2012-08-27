@@ -50,9 +50,9 @@ Timestack is hosted on [Github](https://github.com/icambron/timestack).
 Timestack relies on [moment.js](http://momentjs.com/) and [jQuery](http://jquery.com) to do its job. It also comes with a stylesheet that makes it look the way it does. So you'll need this in your pages `<head>`:
 
 {% highlight html %}
-<script src='http://code.jquery.com/jquery-1.8.0.min.js'></script>
-<script src='https://raw.github.com/timrwood/moment/1.7.0/min/moment.min.js'></script>
-<script src='https://raw.github.com/icambron/timestack/master/files/timestack.min.js'></script>
+<script type='text/javascript' src='http://code.jquery.com/jquery-1.8.0.min.js'></script>
+<script type='text/javascript' src='https://raw.github.com/timrwood/moment/1.7.0/min/moment.min.js'></script>
+<script type='text/javascript' src='https://raw.github.com/icambron/timestack/master/files/timestack.min.js'></script>
 <link rel='stylesheet' type='text/css' href='https://raw.github.com/icambron/timestack/master/files/timestack.css'/>
 {% endhighlight %}
 
