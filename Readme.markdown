@@ -23,7 +23,7 @@ make
 
 ### License
 
-Moment.js is freely distributable under the terms of the MIT license.
+Timestack is freely distributable under the terms of the MIT license.
 
 Copyright (c) 2012 Isaac Cambron
 
