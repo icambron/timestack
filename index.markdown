@@ -189,9 +189,7 @@ One option not included above is the `renderDates` option that allows
 you to override the way Timestack renders time ranges at a lower level.
 The default implementation handles all the stuff about checking whether
 we're looking at days or years and formatting accordingly, so you're a
-bit on your own if you override. 
-
-But one great use case for this is using a third-party library to format
+bit on your own if you override it. But one great use case for this is using a third-party library to format
 the time ranges. For example, here's how to use Timestack with [Twix](https://github.com/icambron/twix.js):
 
 {% highlight javascript %}
