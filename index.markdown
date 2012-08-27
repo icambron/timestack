@@ -47,7 +47,7 @@ Timestack is hosted on [Github](https://github.com/icambron/timestack).
 
 ###Getting started 
 
-Timestack relies on [moment.javascript](http://momentjs.com/) and [jQuery](http://jquery.com) to do its job. It also comes with a stylesheet that makes it look the way it does. So you'll need this in your pages `<head>`:
+Timestack relies on [moment.js](http://momentjs.com/) and [jQuery](http://jquery.com) to do its job. It also comes with a stylesheet that makes it look the way it does. So you'll need this in your pages `<head>`:
 
 {% highlight html %}
 <script src='http://code.jquery.com/jquery-1.8.0.min.js'></script>
