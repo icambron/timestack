@@ -1,3 +1,6 @@
+/*
+Based off CSS code by Matt Bango: http://mattbango.com/notebook/web-development/pure-css-timeline/
+*/
 ul.timestack-events {
   list-style-type: none;
   margin: 0;
