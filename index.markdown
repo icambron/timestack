@@ -47,13 +47,20 @@ Timestack is hosted on [Github](https://github.com/icambron/timestack).
 
 ###Getting started 
 
-Timestack relies on [moment.js](http://momentjs.com/) and [jQuery](http://jquery.com) to do its job. It also comes with a stylesheet that makes it look the way it does. So you'll need this in your pages `<head>`:
+Timestack relies on [moment.js](http://momentjs.com/) and [jQuery](http://jquery.com) to do its job. It also comes with a stylesheet that makes it look the way it does. Download those.
+
+The two Timestack files you need are <a
+href='files/timestack.min.js'>timestack.min.js</a> (or alternatively,
+the non-minified <a href='files/timestack.js'>timestack.js</a>) and the
+<a href='files/timestack.css'>timestack.css</a> stylesheet.
+
+You'll need to reference all that in your page's `<head>`:
 
 {% highlight html %}
 <script type='text/javascript' src='http://code.jquery.com/jquery-1.8.0.min.js'></script>
-<script type='text/javascript' src='https://raw.github.com/timrwood/moment/1.7.0/min/moment.min.js'></script>
-<script type='text/javascript' src='https://raw.github.com/icambron/timestack/master/files/timestack.min.js'></script>
-<link rel='stylesheet' type='text/css' href='https://raw.github.com/icambron/timestack/master/files/timestack.css'/>
+<script type='text/javascript' src='moment.min.js'></script>
+<script type='text/javascript' src='timestack.min.js'></script>
+<link rel='stylesheet' type='text/css' href='timestack.css'/>
 {% endhighlight %}
 
 Then you're good to go! You can read the docs below, or just check out the <a href='files/tutorial.html'>tutorial</a>.
