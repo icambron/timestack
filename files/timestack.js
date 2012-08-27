@@ -6,9 +6,7 @@
       timestack: function(options) {
         var between, defaults;
         defaults = {
-          click: function(data) {
-            return console.log(data.content);
-          },
+          click: null,
           width: '100%',
           parse: function(s) {
             return moment(s);
@@ -96,6 +94,9 @@
             })(i));
             if (i.color) {
               $li.css('background-color', i.color);
+            }
+            if (options.click) {
+              $li.css('cursor', 'pointer');
             }
           }
           dates = between(earliest, latest);

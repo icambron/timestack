@@ -3,7 +3,7 @@ do (jQuery) ->
   $.fn.extend
     timestack: (options) ->
       defaults =
-        click: (data) -> console.log data.content
+        click: null
         width: '100%'
         parse: (s) -> moment(s)
         renderDates: (item) ->
@@ -92,6 +92,7 @@ do (jQuery) ->
             .click(do (i) -> -> options.click i)
 
           $li.css('background-color', i.color) if i.color
+          $li.css('cursor', 'pointer') if options.click
 
         dates = between earliest, latest
         width = (100/dates.length).toFixed(2) + "%"

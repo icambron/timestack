@@ -20,7 +20,6 @@ ul.timestack-events li {
   border: 1px solid #ddd;
   font-size: 1.2em;
   font-weight: bold;
-  cursor: pointer;
 }
 ul.timestack-events li em {
   color: #aaa;
