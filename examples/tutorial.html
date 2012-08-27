@@ -30,17 +30,19 @@
     <p> Click on each item to get a snippet about the basics of using Timestack. You can see it live <a href='https://github.com/icambron/timestack/blob/master/examples/tutorial.html'>here</a>.</p>
     <div id='timeline'>
       <ul>
-        <li data-start='6/15/2004' data-end='12/5/2005' data-title='IBM'>
+        <li data-start='6/15/2004' data-end='12/5/2005'>
+          IBM
           <div>
             <p>
-              <span>This is the content of the LI. It can be arbitary HTML, including other lists,</span>
+              <span>You can embed arbitrary HTML into the list items. They won't show up in the timeline, but they're available to the callback. You can even include nested lists,</span>
               <ul>
                 <li> Like this one.</li>
               </ul>
             </p>
           </div>
         </li>
-        <li data-start='12/05/2005' data-end='11/1/2007' data-title='Contact Networks'>
+        <li data-start='12/05/2005' data-end='11/1/2007'>
+          Contact Networks
           <p>Data about the item is passed to the click callback. It looks like this:</p>
           <pre>
             {
@@ -67,16 +69,20 @@
              </pre>
           </p>
         </li>
-        <li data-start='11/1/2007' data-end='4/1/2010' data-title='Thomson Reuters' data-color='#F1C27B'>
-          You can pick a background color using the data-color attribute. Otherwise, you'll just get the color from the CSS sheet.
+        <li data-start='11/1/2007' data-end='4/1/2010' data-color='#F1C27B'>
+          Thomson Reuters
+          <p>You can pick a background color using the data-color attribute. Otherwise, you'll just get the color from the CSS sheet.</p>
         </li>
-        <li data-start='4/1/2010' data-title='Consulting projects'>
+        <li data-start='4/1/2010'>
+          Consulting projects
           <p>You don't need an end date. Timestack treats the date as now, but doesn't display the time.</p>
         </li>
-        <li data-start='5/1/2010' data-end='7/1/2011' data-title='Ninja Sports'>
+        <li data-start='5/1/2010' data-end='7/1/2011'>
+          Ninja Sports
           <p>Dates can overlap. Items are shown in the order they appear in the UL.</p>
           </li>
-        <li data-start='10/1/2011' data-end='8/15/2012' data-title='Streamcal'>
+        <li data-start='10/1/2011' data-end='8/15/2012'>
+          Streamcal
           <p>For more about the options--there are a bunch--check the docs.</p>
         </li>
         </li>

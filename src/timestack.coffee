@@ -51,7 +51,7 @@ do (jQuery) ->
             tilNow: !endStr
             start: options.parse($li.attr 'data-start')
             end: options.parse endStr
-            title: $li.attr 'data-title'
+            title: $li.contents().filter(-> @nodeType == 3).remove().text()
             color: $li.attr('data-color')
             li: $li
           }
@@ -62,7 +62,7 @@ do (jQuery) ->
 
         earliest.startOf options.span
         unless latest.valueOf() == latest.clone().startOf(options.span).valueOf()
-          latest.endOf options.span 
+          latest.endOf options.span
 
 
         diff = latest - earliest
@@ -80,7 +80,12 @@ do (jQuery) ->
             .append(titlespan)
             .append(timespan)
 
-          i.content = $li.wrapInner("<div class='timestack-content'></div>").children().hide().children()
+          i.content = $li
+            .children()
+            .wrapAll("<div class='timestack-content'></div>")
+            .parent()
+            .hide()
+            .children()
 
           width = ((i.end - i.start)/diff * 100).toFixed(2)
           offset = ((i.start - earliest)/diff * 100).toFixed(2)
@@ -104,4 +109,3 @@ do (jQuery) ->
             .css('width', width)
             .appendTo($intervals)
         $obj.append($intervals)
-

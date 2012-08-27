@@ -60,7 +60,9 @@
               tilNow: !endStr,
               start: options.parse($li.attr('data-start')),
               end: options.parse(endStr),
-              title: $li.attr('data-title'),
+              title: $li.contents().filter(function() {
+                return this.nodeType === 3;
+              }).remove().text(),
               color: $li.attr('data-color'),
               li: $li
             };
@@ -84,7 +86,7 @@
             timespan = $("<em>(" + i.timeDisplay + ")</em>").addClass('timestack-time');
             titlespan = $("<span>" + i.title + " </span>").addClass("timestack-title");
             labelspan = $("<span></span>").addClass('timestack-label').append(titlespan).append(timespan);
-            i.content = $li.wrapInner("<div class='timestack-content'></div>").children().hide().children();
+            i.content = $li.children().wrapAll("<div class='timestack-content'></div>").parent().hide().children();
             width = ((i.end - i.start) / diff * 100).toFixed(2);
             offset = ((i.start - earliest) / diff * 100).toFixed(2);
             $li.prepend(labelspan).css("margin-left", "" + offset + "%").css("width", "" + width + "%").click((function(i) {
