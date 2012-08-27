@@ -1,3 +1,9 @@
+###
+Timestack
+http://icambron.github.com/timestack
+Copyright 2012 Isaac Cambron
+Released under the MIT license, license here: https://github.com/icambron/timestack/blob/master/Readme.markdown
+###
 do (jQuery) ->
 
   $.fn.extend
