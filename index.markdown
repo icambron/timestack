@@ -20,7 +20,7 @@ Check it out:
   </ul>
 </div>
 
-See a fuller demo with clickability <a href='tutorial.html'>in the tutorial</a>.
+See a fuller demo with clickability <a href='files/tutorial.html'>in the tutorial</a>.
 
 How'd we do that? You start with some markup that looks like this:
 
@@ -56,7 +56,7 @@ Timestack relies on [moment.js](http://momentjs.com/) and [jQuery](http://jquery
 <link rel='stylesheet' type='text/css' href='https://raw.github.com/icambron/timestack/master/files/timestack.css'/>
 {% endhighlight %}
 
-Then you're good to go! You can read the docs below, or just check out the <a href='tutorial.html'>tutorial</a>.
+Then you're good to go! You can read the docs below, or just check out the <a href='files/tutorial.html'>tutorial</a>.
 
 Some important stuff you should know:
 
@@ -155,7 +155,7 @@ $('#timeline').timestack({
 });
 {% endhighlight %}
 
-The <a href='tutorial.html'>tutorial</a> shows this in action.
+The <a href='files/tutorial.html'>tutorial</a> shows this in action.
 
 ###Customizing Timestack
 
