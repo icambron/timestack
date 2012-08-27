@@ -47,9 +47,7 @@ Timestack is hosted on [Github](https://github.com/icambron/timestack).
 
 ###Getting started 
 
-Timestack relies on [moment.js](http://momentjs.com/) and [jQuery](http://jquery.com) to do its job. It also comes with a stylesheet that makes it look the way it does.
-
-The two Timestack files you need are <a
+Timestack relies on [moment.js](http://momentjs.com/) and [jQuery](http://jquery.com) to do its job. It also comes with a stylesheet that makes it look the way it does.  The two Timestack files you need are <a
 href='files/timestack.min.js'>timestack.min.js</a> (or alternatively,
 the non-minified <a href='files/timestack.js'>timestack.js</a>) and the
 <a href='files/timestack.css'>timestack.css</a> stylesheet.
