@@ -13,10 +13,10 @@ Check it out:
 
 <div id='hourly'>
   <ul>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-title='Bob OOO' data-color='#ADC3DC'/>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-title='Meeting' data-color='#F2C1D3'/>
-    <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-title='Lunch' data-color='#99FF66'/>
-    <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-title='Code review' data-color='#F2C1D3'/>
+    <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-title='Bob OOO' data-color='#ADC3DC'>Vaction in Europe</li>
+    <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-title='Meeting' data-color='#F2C1D3'>Boooorrinnnggg</li>
+    <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-title='Lunch' data-color='#99FF66'>Nom nom</li>
+    <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-title='Code review' data-color='#F2C1D3'>Tabs vs spaces</li>
   </ul>
 </div>
 
@@ -25,12 +25,12 @@ See a fuller demo with clickability [in the tutorial]("tutorial.html").
 How'd we do that? You start with some markup that looks like this:
 
 {% highlight html %}
-<div class='hourly'>
+<div id='timeline'>
   <ul>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-title='Bob OOO' data-color='#ADC3DC'/>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-title='Meeting' data-color='#F2C1D3'/>
-    <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-title='Lunch' data-color='#99FF66'/>
-    <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-title='Code review' data-color='#F2C1D3'/>
+    <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-title='Bob OOO' data-color='#ADC3DC'>Vaction in Europe</li>
+    <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-title='Meeting' data-color='#F2C1D3'>Boooorrinnnggg</li>
+    <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-title='Lunch' data-color='#99FF66'>Nom nom</li>
+    <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-title='Code review' data-color='#F2C1D3'>Tabs vs spaces</li>
   </ul>
 </div>
  {% endhighlight %}
@@ -88,22 +88,24 @@ That way you can make generate stuff like this:
 
 ###Content
 
-You might want to include more information with each timeline item. Just put it in as HTML, like so:
+You might want to include more information with each timeline item. Just put it inside each LI. You can use as complicated of HTML as you'd like, like so:
 
 {% highlight html %}
 <div id='#timestack'>
   <ul>
-    <li data-start='9/1/2000' data-end='6/15/2004' data-title='An Item'>
-      <p>This is content! It's arbitrary <strong>HTML</strong></p>
+    <li data-start='8/15/1996' data-end='6/01/1998' data-title='An item'>
+     This is the content.
     </li>
-    <li data-start='6/15/2004' data-end='12/5/2005' data-title='Another Item'>
-      <p>Here's more</p>
+    <li data-start='9/1/2000' data-end='6/15/2004' data-title='Another Item'>
+      <p>This is more content! It's arbitrary <strong>HTML</strong></p>
     </li>
   </ul>
 </div>
 {% endhighlight %}
 
-That isn't rendered in the timeline, but Timestack will pass that inner HTML back to you in the click callback. 
+That isn't rendered in the timeline, but Timestack will pass that inner
+HTML back to you in the click callback (see below). Also check out the
+[tutorial page](tutorial.html).
 
 ###Clickability
 
