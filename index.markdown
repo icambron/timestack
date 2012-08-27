@@ -227,12 +227,6 @@ $(function(){
 
 Notice the more subtle formatting. You can see a full example of this [here](https://github.com/icambron/timestack/blob/master/examples/twix.html).
 
-##Known Issues
-
-Timestack isn't very defensive with its inputs and it's a little too
-easy to break the page by not specifying things correctly. I'm working
-on that.
-
 ##Credits
 
 Much of the inspiration and CSS comes from Matt Bango's [Pure CSS
