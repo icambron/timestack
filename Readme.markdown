@@ -21,9 +21,7 @@ To build just run
 make
 ```
 
-### License
-
-Timestack is freely distributable under the terms of the MIT license.
+### License (MIT)
 
 Copyright (c) 2012 Isaac Cambron
 
