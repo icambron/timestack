@@ -44,7 +44,7 @@ Released under the MIT license, license here: https://github.com/icambron/timest
           }
         };
         options = $.extend(defaults, options);
-        if (!(['year', 'month', 'day', 'hour'].indexOf(options.span) > 0)) {
+        if (!(['year', 'month', 'day', 'hour'].indexOf(options.span) > -1)) {
           throw "" + options.span + " is not a valid span option";
         }
         between = function(start, end) {

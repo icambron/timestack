@@ -31,7 +31,7 @@ do (jQuery) ->
 
       options = $.extend defaults, options
 
-      throw "#{options.span} is not a valid span option" unless ['year', 'month', 'day', 'hour'].indexOf(options.span) > 0
+      throw "#{options.span} is not a valid span option" unless ['year', 'month', 'day', 'hour'].indexOf(options.span) > -1
 
       between = (start, end) ->
         results = []
