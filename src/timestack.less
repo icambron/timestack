@@ -9,6 +9,7 @@ ul.timestack-events {
   list-style-type: none;
   margin: 0;
   padding: 0 0 20px 0;
+  width: 100%;
 
   li {
 
@@ -48,6 +49,7 @@ ul.intervals {
   padding: 0;
   margin: 0;
   display: block;
+  width: 100%;
 
   li {
     .border-box;
@@ -63,6 +65,15 @@ ul.intervals {
   li:first-child {
     border-left: 1px solid #ccc;
   }
+}
+
+ul.intervals:after {
+  content: ".";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+  margin-bottom: 8px;
 }
 
 

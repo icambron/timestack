@@ -4,7 +4,6 @@ do (jQuery) ->
     timestack: (options) ->
       defaults =
         click: null
-        width: '100%'
         parse: (s) -> moment(s)
         renderDates: (item) ->
           dateFormat = @dateFormats[options.span]
@@ -63,7 +62,7 @@ do (jQuery) ->
 
         earliest.startOf options.span
         unless latest.valueOf() == latest.clone().startOf(options.span).valueOf()
-          latest.endOf options.span
+          latest.endOf options.span 
 
 
         diff = latest - earliest

@@ -7,7 +7,6 @@
         var between, defaults;
         defaults = {
           click: null,
-          width: '100%',
           parse: function(s) {
             return moment(s);
           },
