@@ -80,8 +80,7 @@ do (jQuery) ->
             .append(titlespan)
             .append(timespan)
 
-          i.content = $li.children().wrapAll("<div class='timestack-content'></div>")
-          i.content.parent().hide()
+          i.content = $li.wrapInner("<div class='timestack-content'></div>").children().hide().children()
 
           width = ((i.end - i.start)/diff * 100).toFixed(2)
           offset = ((i.start - earliest)/diff * 100).toFixed(2)
