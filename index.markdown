@@ -13,10 +13,10 @@ Check it out:
 
 <div id='hourly'>
   <ul>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-title='Bob OOO' data-color='#ADC3DC'>Vaction in Europe</li>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-title='Meeting' data-color='#F2C1D3'>Boooorrinnnggg</li>
-    <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-title='Lunch' data-color='#99FF66'>Nom nom</li>
-    <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-title='Code review' data-color='#F2C1D3'>Tabs vs spaces</li>
+    <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-color='#ADC3DC'>Bob OOO</li>
+    <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-color='#F2C1D3'>Meeting</li>
+    <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-color='#99FF66'>Lunch</li>
+    <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-color='#F2C1D3'>Code review</li>
   </ul>
 </div>
 
@@ -27,10 +27,10 @@ How'd we do that? You start with some markup that looks like this:
 {% highlight html %}
 <div id='timeline'>
   <ul>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-title='Bob OOO' data-color='#ADC3DC'>Vaction in Europe</li>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-title='Meeting' data-color='#F2C1D3'>Boooorrinnnggg</li>
-    <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-title='Lunch' data-color='#99FF66'>Nom nom</li>
-    <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-title='Code review' data-color='#F2C1D3'>Tabs vs spaces</li>
+    <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-color='#ADC3DC'>Bob OOO</li>
+    <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-color='#F2C1D3'>Meeting</li>
+    <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-color='#99FF66'>Lunch</li>
+    <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-color='#F2C1D3'>Code review</li>
   </ul>
 </div>
  {% endhighlight %}
@@ -78,34 +78,36 @@ That way you can make generate stuff like this:
 
 <div id='daily'>
   <ul>
-    <li data-start='2012-08-26' data-end='2012-08-28' data-title='Vacation!' data-color='#99FF66'/>
-    <li data-start='2012-08-15' data-end='2012-08-20' data-title='Convention' data-color='#F2C1D3'/>
-    <li data-start='2012-08-21' data-end='2012-08-25' data-title='Meetings' data-color='#ADC3DC'/>
-    <li data-start='2012-08-07' data-end='2012-08-16' data-title='Sprint' data-color='#F1C27B'>
-    <li data-start='2012-08-19' data-end='2012-08-26' data-title='Sprint' data-color='#F1C27B'>
+    <li data-start='2012-08-26' data-end='2012-08-28' data-color='#99FF66'>Vacation!</li>
+    <li data-start='2012-08-15' data-end='2012-08-20' data-color='#F2C1D3'>Convention</li>
+    <li data-start='2012-08-21' data-end='2012-08-25' data-color='#ADC3DC'>Meetings</li>
+    <li data-start='2012-08-07' data-end='2012-08-16' data-color='#F1C27B'>Sprint</li>
+    <li data-start='2012-08-19' data-end='2012-08-26' data-color='#F1C27B'>Sprint</li>
   </ul>
 </div>
 
 ###Content
 
-You might want to include more information with each timeline item. Just put it inside each LI. You can use as complicated of HTML as you'd like, like so:
+You might want to include more information with each timeline item. Just add HTML nodes inside each LI, like so:
 
 {% highlight html %}
 <div id='#timestack'>
   <ul>
-    <li data-start='8/15/1996' data-end='6/01/1998' data-title='An item'>
-     This is the content.
+    <li data-start='8/15/1996' data-end='6/01/1998'>
+     An item title
+     <p>This is content.</p>
     </li>
-    <li data-start='9/1/2000' data-end='6/15/2004' data-title='Another Item'>
-      <p>This is more content! It's arbitrary <strong>HTML</strong></p>
+    <li data-start='9/1/2000' data-end='6/15/2004'>
+      Another title
+      <div>
+        <p>This is more content! It's arbitrary <strong>HTML</strong></p>
+      <div>
     </li>
   </ul>
 </div>
 {% endhighlight %}
 
-That isn't rendered in the timeline, but Timestack will pass that inner
-HTML back to you in the click callback (see below). Also check out the
-[tutorial page](tutorial.html).
+Those HTML nodes  aren't rendered in the timeline, but Timestack will pass them back to you in the click callback (see below).
 
 ###Clickability
 
@@ -120,9 +122,9 @@ $('#timeline').timestack({
 
 <div id='clicky'>
   <ul>
-    <li data-start='2012-08-15' data-end='2012-10-28' data-title='Spain' data-color='#ADC3DC'/>
-    <li data-start='2012-11-01' data-end='2013-02-28' data-title='France' data-color='#F2C1D3'/>
-    <li data-start='2013-03-01' data-end='2013-04-30' data-title='Italy' data-color='#99FF66'/>
+    <li data-start='2012-08-15' data-end='2012-10-28' data-color='#ADC3DC'>Spain</li>
+    <li data-start='2012-11-01' data-end='2013-02-28' data-color='#F2C1D3'>France</li>
+    <li data-start='2013-03-01' data-end='2013-04-30' data-color='#99FF66'>Italy</li>
   </ul>
 </div>
 
@@ -133,9 +135,9 @@ The `data` passed to the callback is an object that looks like this:
   tilNow: false,                       //does the item have an end time?
   start: moment,                       //a moment object representing the start time
   end: moment,                         //a moment object representing the end time
-  title: 'Contact Networks',           //the value of the data-title attribute
+  title: 'Contact Networks',           //the text child of the LI, rendered as the title of the item
   color: '#00000',                     //the value of the data-color attribute
-  content: jquery,                     //a jquery object containing the LI's children
+  content: jquery,                     //a jquery object containing the LI's DOM children
   timeDisplay: 'Dec 2005 - Nov 2007'   //the date/time range rendered on the item
 }
 {% endhighlight %}
@@ -216,10 +218,10 @@ $(function(){
 
 <div id='twix'> 
   <ul>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-title='Bob OOO' data-color='#ADC3DC'/>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-title='Meeting' data-color='#F2C1D3'/>
-    <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-title='Lunch' data-color='#99FF66'/>
-    <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-title='Code review' data-color='#F2C1D3'/>
+    <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-color='#ADC3DC'>Bob OOO</li>
+    <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-color='#F2C1D3'>Meeting</li>
+    <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-color='#99FF66'>Lunch</li>
+    <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-color='#F2C1D3'>Code review</li>
   </ul>
 </div>
 
