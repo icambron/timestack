@@ -44,6 +44,9 @@ Released under the MIT license, license here: https://github.com/icambron/timest
           }
         };
         options = $.extend(defaults, options);
+        if (!(['year', 'month', 'day', 'hour'].indexOf(options.span) > 0)) {
+          throw "" + options.span + " is not a valid span option";
+        }
         between = function(start, end) {
           var index, results;
           results = [];
@@ -75,6 +78,9 @@ Released under the MIT license, license here: https://github.com/icambron/timest
               color: $li.attr('data-color'),
               li: $li
             };
+            if (!(i.start <= i.end)) {
+              throw 'Start times must be before end times';
+            }
             if (!(earliest && earliest < i.start)) {
               earliest = i.start.clone();
             }

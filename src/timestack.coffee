@@ -31,6 +31,8 @@ do (jQuery) ->
 
       options = $.extend defaults, options
 
+      throw "#{options.span} is not a valid span option" unless ['year', 'month', 'day', 'hour'].indexOf(options.span) > 0
+
       between = (start, end) ->
         results = []
         index = start.clone().startOf(options.span)
@@ -61,6 +63,8 @@ do (jQuery) ->
             color: $li.attr('data-color')
             li: $li
           }
+
+          throw 'Start times must be before end times' unless i.start <= i.end
 
           earliest = i.start.clone() unless earliest && earliest < i.start
           latest = i.end.clone() unless latest && latest > i.end
