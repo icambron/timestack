@@ -1,21 +1,28 @@
 do (jQuery) ->
 
-  capitalize = (s) -> s.charAt(0).toUpperCase() + s.slice(1)
-
   $.fn.extend
     timestack: (options) ->
       defaults =
         click: (data) -> console.log data.content
         width: '100%'
-        parse: (str) -> moment str
-        dateFormat: 'MMM YYYY'
-        displayFormat: (start, end) -> "#{start} - #{end}"
-        color: '#eee'
+        parse: (s) -> moment(s)
+        renderDates: (item) ->
+          dateFormat = @dateFormats[options.span]
+          startFormated = item.start.format dateFormat
+          endFormated = if item.tilNow then '' else item.end.format dateFormat
+          @formatRange startFormated, endFormated
+        formatRange: (startStr, endStr) -> "#{startStr} - #{endStr}"
         span: 'year'
-        spanFormats:
+        dateFormats:
+          year: 'MMM YYYY'
+          month: 'MMM DD'
+          day: 'MMM DD'
+          hour: 'h:mm a'
+        intervalFormats:
           year: 'YYYY'
           month: 'MMM YYYY'
-          day: 'MMM DD, YYYY'
+          day: 'MMM DD'
+          hour: 'h:mm a'
 
       options = $.extend defaults, options
 
@@ -41,19 +48,18 @@ do (jQuery) ->
         items = $ul.children('li').map ->
           $li = $ @
           endStr = $li.attr 'data-end'
-          obj = {
+          i = {
             tilNow: !endStr
             start: options.parse($li.attr 'data-start')
-            end: options.parse(endStr)
+            end: options.parse endStr
             title: $li.attr 'data-title'
-            color: $li.attr('data-color') || options.color
+            color: $li.attr('data-color')
             li: $li
           }
 
-          earliest = obj.start.clone() unless earliest && earliest < obj.start
-          latest = obj.end.clone() unless latest && latest > obj.end
-
-          obj
+          earliest = i.start.clone() unless earliest && earliest < i.start
+          latest = i.end.clone() unless latest && latest > i.end
+          i
 
         earliest.startOf options.span
         latest.endOf options.span
@@ -63,9 +69,7 @@ do (jQuery) ->
         for i in items
           $li = i.li
 
-          startFormat = i.start.format options.dateFormat
-          endFormat = if i.tilNow then '' else i.end.format options.dateFormat
-          i.timeDisplay = options.displayFormat(startFormat, endFormat)
+          i.timeDisplay = options.renderDates i
 
           timespan = $("<em>(#{i.timeDisplay})</em>").addClass('timestack-time')
           titlespan = $("<span>#{i.title} </span>").addClass("timestack-title")
@@ -85,12 +89,13 @@ do (jQuery) ->
             .prepend(labelspan)
             .css("margin-left", "#{offset}%")
             .css("width", "#{width}%")
-            .css('background-color', i.color)
             .click(do (i) -> -> options.click i)
 
+          $li.css('background-color', i.color) if i.color
+
         dates = between earliest, latest
-        width = (1/dates.length * 100).toFixed(2) - 0.03 + "%"
-        format = options.spanFormats[options.span]
+        width = (100/dates.length).toFixed(2) + "%"
+        format = options.intervalFormats[options.span]
         $intervals = $("<ul></ul>").addClass("intervals")
         for date in dates
           $("<li></li>")

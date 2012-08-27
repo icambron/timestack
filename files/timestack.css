@@ -4,17 +4,22 @@ ul.timestack-events {
   padding: 0 0 20px 0;
 }
 ul.timestack-events li {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin-bottom: 6px;
+  position: relative;
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #707070;
+  background-color: #eee;
   -webkit-border-radius: 11px;
   -moz-border-radius: 11px;
   border-radius: 11px;
   border: 1px solid #ddd;
-  color: #707070;
   font-size: 1.2em;
   font-weight: bold;
-  margin-bottom: 6px;
-  padding: 10px;
-  position: relative;
-  text-align: center;
   cursor: pointer;
 }
 ul.timestack-events li em {
@@ -28,6 +33,9 @@ ul.intervals {
   display: block;
 }
 ul.intervals li {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   border-right: 1px solid #ccc;
   color: #999;
   float: left;
@@ -35,7 +43,6 @@ ul.intervals li {
   margin: 0;
   padding: 15px 0;
   text-align: center;
-  width: 14.17%;
 }
 ul.intervals li:first-child {
   border-left: 1px solid #ccc;

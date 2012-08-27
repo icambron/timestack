@@ -8,6 +8,7 @@
     <script>
       $(function(){
         $('#timeline').timestack({
+          span: 'hour',
           click: function(data){
             $('#title').text(data.title);
             $('#dates').text(data.timeDisplay);
@@ -25,21 +26,21 @@
   <body>
     <div id='timeline'>
       <ul>
-        <li data-start='5/25/1982' data-end='5/25/1986' data-title='I am a toddler'>
-          <div>
-            <p>
-              <span>This is the content of the LI. It can be arbitary HTML, including other lists:</span>
-             <ul>
-               <li> Like this one.</li>
-             </ul>
-            </p>
-          </div>
+        <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-title='Bob OOO'>
+          <p>He's in the Bahamas or something.</p>
+          <h2>Lucky bastard</h2>
         </li>
-        <li data-start='10/14/1983' data-end='10/14/1987' data-title='My brother is a toddler' data-color='#99FF66'>
-          <p>You can put in colors using the data-color attribute.</p>
+        <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:00' data-title='Meeting'>
+          <p>Discuss synergies and multitasking.</p>
+          </li>
+        <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-title='Lunch' data-color='#99FF66'>
+          <p>Nom nom at <a href='http://www.cloverfoodlab.com/'>Clover</a>.</p>
         </li>
-        <li data-start='5/25/1982' data-title='I am alive'>
-          <p>You don't need an end date. Timestack treats the date as now, but doesn't display the time.</p>
+        <li data-start='2012-08-26T12:30' data-end='2012-08-26T15:30' data-title='Meeting' data-color='#F1C4C4'>
+          <p>Skip!</p>
+        </li>
+        <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:00' data-title='Code review'>
+          <p>Gotta find out if everyone is happy with this timeline component.<p>
         </li>
       </ul>
     </div>

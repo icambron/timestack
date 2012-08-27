@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src='http://code.jquery.com/jquery-1.8.0.min.js'></script>
+    <script src='https://raw.github.com/timrwood/moment/1.7.0/min/moment.min.js'></script>
+    <script src='https://raw.github.com/icambron/twix.js/master/bin/twix.js'></script>
+    <script src='../files/timestack.js'></script>
+    <link rel='stylesheet' type='text/css' href='../files/timestack.css'/>
+    <script>
+      $(function(){
+        $('#timeline').timestack({
+          span: 'hour',
+
+          renderDates: function(item){
+            return moment.twix(item.start, item.end).format({showDate: false})
+          },
+
+          click: function(data){
+            $('#title').text(data.title);
+            $('#dates').text(data.timeDisplay);
+            $('#content').empty().append(data.content);
+          }
+        });
+      });
+    </script>
+    <style>
+      #display {
+        padding-top: 10px;
+        clear: both;
+      }
+    </style>
+  <body>
+    <div id='timeline'>
+      <ul>
+        <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-title='Bob OOO'>
+          <p>He's in the Bahamas or something.</p>
+          <h2>Lucky bastard</h2>
+        </li>
+        <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:00' data-title='Meeting'>
+          <p>Discuss synergies and multitasking.</p>
+          </li>
+        <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-title='Lunch' data-color='#99FF66'>
+          <p>Nom nom at <a href='http://www.cloverfoodlab.com/'>Clover</a>.</p>
+        </li>
+        <li data-start='2012-08-26T12:30' data-end='2012-08-26T15:30' data-title='Meeting' data-color='#F1C4C4'>
+          <p>Skip!</p>
+        </li>
+        <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:00' data-title='Code review'>
+          <p>Gotta find out if everyone is happy with this timeline component.<p>
+        </li>
+      </ul>
+    </div>
+    <div id='display'>
+      <h1 id='title'></h1>
+      <h3 id='dates'></h3>
+      <div id='content'/>
+    </div>
+  </body>
+</html>

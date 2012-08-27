@@ -2,10 +2,6 @@
 (function() {
 
   (function(jQuery) {
-    var capitalize;
-    capitalize = function(s) {
-      return s.charAt(0).toUpperCase() + s.slice(1);
-    };
     return $.fn.extend({
       timestack: function(options) {
         var between, defaults;
@@ -14,19 +10,31 @@
             return console.log(data.content);
           },
           width: '100%',
-          parse: function(str) {
-            return moment(str);
+          parse: function(s) {
+            return moment(s);
           },
-          dateFormat: 'MMM YYYY',
-          displayFormat: function(start, end) {
-            return "" + start + " - " + end;
+          renderDates: function(item) {
+            var dateFormat, endFormated, startFormated;
+            dateFormat = this.dateFormats[options.span];
+            startFormated = item.start.format(dateFormat);
+            endFormated = item.tilNow ? '' : item.end.format(dateFormat);
+            return this.formatRange(startFormated, endFormated);
           },
-          color: '#eee',
+          formatRange: function(startStr, endStr) {
+            return "" + startStr + " - " + endStr;
+          },
           span: 'year',
-          spanFormats: {
+          dateFormats: {
+            year: 'MMM YYYY',
+            month: 'MMM DD',
+            day: 'MMM DD',
+            hour: 'h:mm a'
+          },
+          intervalFormats: {
             year: 'YYYY',
             month: 'MMM YYYY',
-            day: 'MMM DD, YYYY'
+            day: 'MMM DD',
+            hour: 'h:mm a'
           }
         };
         options = $.extend(defaults, options);
@@ -41,31 +49,31 @@
           return results;
         };
         return this.each(function() {
-          var $intervals, $li, $obj, $ul, date, dates, diff, earliest, endFormat, format, i, items, labelspan, latest, offset, startFormat, timespan, titlespan, width, _i, _j, _len, _len1;
+          var $intervals, $li, $obj, $ul, date, dates, diff, earliest, format, i, items, labelspan, latest, offset, timespan, titlespan, width, _i, _j, _len, _len1;
           $obj = $(this);
           $ul = $obj.children('ul');
           $ul.css('width', options.width).addClass('timestack-events');
           earliest = null;
           latest = null;
           items = $ul.children('li').map(function() {
-            var $li, endStr, obj;
+            var $li, endStr, i;
             $li = $(this);
             endStr = $li.attr('data-end');
-            obj = {
+            i = {
               tilNow: !endStr,
               start: options.parse($li.attr('data-start')),
               end: options.parse(endStr),
               title: $li.attr('data-title'),
-              color: $li.attr('data-color') || options.color,
+              color: $li.attr('data-color'),
               li: $li
             };
-            if (!(earliest && earliest < obj.start)) {
-              earliest = obj.start.clone();
+            if (!(earliest && earliest < i.start)) {
+              earliest = i.start.clone();
             }
-            if (!(latest && latest > obj.end)) {
-              latest = obj.end.clone();
+            if (!(latest && latest > i.end)) {
+              latest = i.end.clone();
             }
-            return obj;
+            return i;
           });
           earliest.startOf(options.span);
           latest.endOf(options.span);
@@ -73,9 +81,7 @@
           for (_i = 0, _len = items.length; _i < _len; _i++) {
             i = items[_i];
             $li = i.li;
-            startFormat = i.start.format(options.dateFormat);
-            endFormat = i.tilNow ? '' : i.end.format(options.dateFormat);
-            i.timeDisplay = options.displayFormat(startFormat, endFormat);
+            i.timeDisplay = options.renderDates(i);
             timespan = $("<em>(" + i.timeDisplay + ")</em>").addClass('timestack-time');
             titlespan = $("<span>" + i.title + " </span>").addClass("timestack-title");
             labelspan = $("<span></span>").addClass('timestack-label').append(titlespan).append(timespan);
@@ -83,15 +89,18 @@
             i.content.parent().hide();
             width = ((i.end - i.start) / diff * 100).toFixed(2);
             offset = ((i.start - earliest) / diff * 100).toFixed(2);
-            $li.prepend(labelspan).css("margin-left", "" + offset + "%").css("width", "" + width + "%").css('background-color', i.color).click((function(i) {
+            $li.prepend(labelspan).css("margin-left", "" + offset + "%").css("width", "" + width + "%").click((function(i) {
               return function() {
                 return options.click(i);
               };
             })(i));
+            if (i.color) {
+              $li.css('background-color', i.color);
+            }
           }
           dates = between(earliest, latest);
-          width = (1 / dates.length * 100).toFixed(2) - 0.03 + "%";
-          format = options.spanFormats[options.span];
+          width = (100 / dates.length).toFixed(2) + "%";
+          format = options.intervalFormats[options.span];
           $intervals = $("<ul></ul>").addClass("intervals");
           for (_j = 0, _len1 = dates.length; _j < _len1; _j++) {
             date = dates[_j];
