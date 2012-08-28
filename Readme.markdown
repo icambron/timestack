@@ -5,6 +5,10 @@ Timestack is a simple jQuery plugin for generating pretty, clickable timelines f
 
 ### [Documentation](http://icambron.github.com/timestack)
 
+### More info
+
+Here's a [blog post](http://drunkencoder.net/introducing_timestack) about Timestack.
+
 ### Building/Contributing
 
 Timestack is written in [CoffeeScript](http://coffeescript.org/) and [Less](http://lesscss.org/). You can find the source files in `/src`; the output directory is `/files`.
