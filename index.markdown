@@ -13,10 +13,10 @@ Check it out:
 
 <div id='hourly'>
   <ul>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-color='#ADC3DC'>Bob OOO</li>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-color='#F2C1D3'>Meeting</li>
-    <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-color='#99FF66'>Lunch</li>
-    <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-color='#F2C1D3'>Code review</li>
+    <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-color='#95e6ff'>Bob OOO</li>
+    <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-color='#ff95c0'>Meeting</li>
+    <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-color='#97ffb1'>Lunch</li>
+    <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-color='#ff95c0'>Code review</li>
   </ul>
 </div>
 
@@ -27,10 +27,10 @@ How'd we do that? You start with some markup that looks like this:
 {% highlight html %}
 <div id='timeline'>
   <ul>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-color='#ADC3DC'>Bob OOO</li>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-color='#F2C1D3'>Meeting</li>
-    <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-color='#99FF66'>Lunch</li>
-    <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-color='#F2C1D3'>Code review</li>
+    <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-color='#95e6ff'>Bob OOO</li>
+    <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-color='#ff95c0'>Meeting</li>
+    <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-color='#97ffb1'>Lunch</li>
+    <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-color='#ff95c0'>Code review</li>
   </ul>
 </div>
  {% endhighlight %}
@@ -83,11 +83,11 @@ That way you can make generate stuff like this:
 
 <div id='daily'>
   <ul>
-    <li data-start='2012-08-26' data-end='2012-08-28' data-color='#99FF66'>Vacation!</li>
-    <li data-start='2012-08-15' data-end='2012-08-20' data-color='#F2C1D3'>Convention</li>
-    <li data-start='2012-08-21' data-end='2012-08-25' data-color='#ADC3DC'>Meetings</li>
-    <li data-start='2012-08-07' data-end='2012-08-16' data-color='#F1C27B'>Sprint</li>
-    <li data-start='2012-08-19' data-end='2012-08-26' data-color='#F1C27B'>Sprint</li>
+    <li data-start='2012-08-26' data-end='2012-08-28' data-color='#97ffb1'>Vacation!</li>
+    <li data-start='2012-08-15' data-end='2012-08-20' data-color='#ff95c0'>Convention</li>
+    <li data-start='2012-08-21' data-end='2012-08-25' data-color='#95e6ff'>Meetings</li>
+    <li data-start='2012-08-07' data-end='2012-08-16' data-color='#da98f1'>Sprint</li>
+    <li data-start='2012-08-19' data-end='2012-08-26' data-color='#da98f1'>Sprint</li>
   </ul>
 </div>
 
@@ -127,9 +127,9 @@ $('#timeline').timestack({
 
 <div id='clicky'>
   <ul>
-    <li data-start='2012-08-15' data-end='2012-10-28' data-color='#ADC3DC'>Spain</li>
-    <li data-start='2012-11-01' data-end='2013-02-28' data-color='#F2C1D3'>France</li>
-    <li data-start='2013-03-01' data-end='2013-04-30' data-color='#99FF66'>Italy</li>
+    <li data-start='2012-08-15' data-end='2012-10-28' data-color='#f8f736'>Spain</li>
+    <li data-start='2012-11-01' data-end='2013-02-28' data-color='#36f8dc'>France</li>
+    <li data-start='2013-03-01' data-end='2013-04-30' data-color='#fbc253'>Italy</li>
   </ul>
 </div>
 
@@ -223,10 +223,10 @@ $(function(){
 
 <div id='twix'> 
   <ul>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-color='#ADC3DC'>Bob OOO</li>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-color='#F2C1D3'>Meeting</li>
-    <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-color='#99FF66'>Lunch</li>
-    <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-color='#F2C1D3'>Code review</li>
+    <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-color='#95e6ff'>Bob OOO</li>
+    <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-color='#ff95c0'>Meeting</li>
+    <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-color='#97ffb1'>Lunch</li>
+    <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-color='#ff95c0'>Code review</li>
   </ul>
 </div>
 
