@@ -3,11 +3,10 @@
   "version": "0.0.1",
   "author": "Isaac Cambron",
   "dependencies": {
-    "coffee-script": "*",
-    "moment": "> 1.7"
   },
   "devDependencies": {
     "uglify-js" : "*",
-    "less": "*"
+    "less": "*",
+    "coffee-script": "*"
   }
 }
