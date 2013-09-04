@@ -11,37 +11,43 @@ Timestack is a simple jQuery plugin for generating pretty, clickable timelines f
 ###Introducing Timestack
 Check it out:
 
-<div id='hourly'>
-  <ul>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-color='#95e6ff'>Bob OOO</li>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-color='#ff95c0'>Meeting</li>
-    <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-color='#97ffb1'>Lunch</li>
-    <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-color='#ff95c0'>Code review</li>
-  </ul>
-</div>
+<div id='hourly'></div>
 
-See a fuller demo with clickability <a href='files/tutorial.html'>in the tutorial</a>.
-
-How'd we do that? You start with some markup that looks like this:
-
-{% highlight html %}
-<div id='timeline'>
-  <ul>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-color='#95e6ff'>Bob OOO</li>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-color='#ff95c0'>Meeting</li>
-    <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-color='#97ffb1'>Lunch</li>
-    <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-color='#ff95c0'>Code review</li>
-  </ul>
-</div>
- {% endhighlight %}
-
-Then do this:
+Here's how it works:
 
 {% highlight javascript %}
-$('#timeline').timestack({span: 'hour'});
+$('#hourly').timestack({
+  span: 'hour',
+  data: [
+    {
+      title: 'Bob OOO',
+      start: '2012-08-26T09:00',
+      end: '2012-08-26T17:00',
+      color: 'rgb(149, 203, 255)'
+    },
+    {
+      title: 'Meeting',
+      start: '2012-08-26T09:00',
+      end: '2012-08-26T10:00',
+      color: 'rgb(255, 149, 192)'
+    },
+    {
+      title: 'Lunch',
+      start: '2012-08-26T12:00',
+      end: '2012-08-26T13:00',
+      color: 'rgb(151, 255, 177)'
+    },
+    {
+      title: 'Code review',
+      start: '2012-08-26T12:30',
+      end: '2012-08-26T15:30',
+      color: 'rgb(255, 149, 192)'
+    }
+  ]
+});
 {% endhighlight %}
 
-That's it!
+And have a div on your page like `<div id="timeline"></div>`. That's it!
 
 Timestack is hosted on [Github](https://github.com/icambron/timestack).
 
@@ -65,102 +71,62 @@ Then you're good to go! You can read the docs below, or just check out the <a hr
 
 Some important stuff you should know:
 
- * Those dates in the HTML attributes are [ISO-8601](http://en.wikipedia.org/wiki/ISO_8601). You can actually use anything that `moment()` will [parse](http://momentjs.com/docs/#/parsing/javascript-date-object/), and you can even customize that parsing (see below).
+ * Those dates in the HTML attributes are [ISO-8601](http://en.wikipedia.org/wiki/ISO_8601), but you can actually use anything that `moment()` will [parse](http://momentjs.com/docs/#/parsing/javascript-date-object/), or even an actual moment object. And you can customize that parsing (see below).
 
- * You don't have to specify and end time. Timestack will treat the time as right now, but won't display the time in the timeline.
+ * You don't have to specify an end time. Timestack will treat the time as right now, but won't display the time in the timeline.
 
- * The background color will default to what's in the stylesheet unless you override with the `data-color` attribute. The color is applied as CSS, so you can use hash codes or any color names the browser knows.
+ * The background color will default to what's in the stylesheet unless you override with the `color` property. The color is applied as CSS, so you can use hash codes or any color names the browser knows.
 
 ###Different spans
 
 Timestack needs to know how long of time scales we're talking about. Use the `span` option to tell Timestack how to show dates and how to set up the intervals at the bottom. It defaults to "year", but you might want "hour", "day", or "month", depending on how long your timeline items are. Just set it when you call `timestack()`:
 
 {% highlight javascript %}
-$('#timeline').timestack({span: 'day'});
+$('#timeline').timestack({
+  span: 'day', 
+  data: [/*...*/]
+});
 {% endhighlight %}
 
 That way you can make generate stuff like this:
 
-<div id='daily'>
-  <ul>
-    <li data-start='2012-08-26' data-end='2012-08-28' data-color='#97ffb1'>Vacation!</li>
-    <li data-start='2012-08-15' data-end='2012-08-20' data-color='#ff95c0'>Convention</li>
-    <li data-start='2012-08-21' data-end='2012-08-25' data-color='#95e6ff'>Meetings</li>
-    <li data-start='2012-08-07' data-end='2012-08-16' data-color='#da98f1'>Sprint</li>
-    <li data-start='2012-08-19' data-end='2012-08-26' data-color='#da98f1'>Sprint</li>
-  </ul>
-</div>
-
-###Content
-
-You might want to include more information with each timeline item. Just add HTML nodes inside each LI, like so:
-
-{% highlight html %}
-<div id='#timestack'>
-  <ul>
-    <li data-start='8/15/1996' data-end='6/01/1998'>
-     An item title
-     <p>This is content.</p>
-    </li>
-    <li data-start='9/1/2000' data-end='6/15/2004'>
-      Another title
-      <div>
-        <p>This is more content! It's arbitrary <strong>HTML</strong></p>
-      <div>
-    </li>
-  </ul>
-</div>
-{% endhighlight %}
-
-Those HTML nodes  aren't rendered in the timeline, but Timestack will pass them back to you in the click callback (see below).
+<div id='daily'></div>
 
 ###Clickability
 
 If you specify a click callback, the timeline items will become clickable:
 
 {% highlight javascript %}
-$('#timeline').timestack({
+$('#clicky').timestack({
   span: 'month',
-  click: function(data){alert(data.title);}
+  click: function(data){alert(data.title);},
+  data: [/*...*/]
 });
 {% endhighlight %}
 
-<div id='clicky'>
-  <ul>
-    <li data-start='2012-08-15' data-end='2012-10-28' data-color='#f8f736'>Spain</li>
-    <li data-start='2012-11-01' data-end='2013-02-28' data-color='#36f8dc'>France</li>
-    <li data-start='2013-03-01' data-end='2013-04-30' data-color='#fbc253'>Italy</li>
-  </ul>
-</div>
+<div id='clicky'></div>
 
-The `data` passed to the callback is an object that looks like this:
+The `data` passed back is just the object you passed in, with a few enhancements:
 
 {% highlight javascript %}
 {
+  //stuff you passed in
+  start: moment,                       //now wrapped as a moment object
+  end: moment,
+  title: 'Contact Networks',
+  color: '#00000',
+
+  //stuff added by timestack
   tilNow: false,                       //does the item have an end time?
-  start: moment,                       //a moment object representing the start time
-  end: moment,                         //a moment object representing the end time
-  title: 'Contact Networks',           //the text child of the LI, rendered as the title of the item
-  color: '#00000',                     //the value of the data-color attribute
-  content: jquery,                     //a jquery object containing the LI's DOM children
   timeDisplay: 'Dec 2005 - Nov 2007'   //the date/time range rendered on the item
+
+  //any other properties you set on the JS object
+handlers
 }
 {% endhighlight %}
 
-
-Combined with content (see above), you can use this callback to push content into another div to show details about what the user clicked on:
-
-{% highlight javascript %}
-$('#timeline').timestack({
-  click: function(data){
-    $('#title').text(data.title);
-    $('#dates').text(data.timeDisplay);
-    $('#content').empty().append(data.content);
-  }
-});
-{% endhighlight %}
-
-The <a href='files/tutorial.html'>tutorial</a> shows this in action.
+Because we pass through arbitrary properties, you can use that to pass
+additional content to your click handlers.
 
 ###Customizing Timestack
 
@@ -186,9 +152,38 @@ Timestack allows you to override a lot of its functionality. Here are the most c
     day: 'MMM DD'
     hour: 'h:mm a'
   }
+  
+  data: []
+}
 {% endhighlight %}
 
 You should also feel free to edit the stylesheet to change fonts, colors, etc. It's [pretty simple](https://github.com/icambron/timestack/blob/master/files/timestack.css).
+
+###Progressive enhancement
+
+Mostly for reverse compatibility with an earlier version of Timestack, you can construct a timeline out of existing LIs instead of passing in a data element. The DOM looks like this:
+
+{% highlight html %}
+<div id='timeline'>
+  <ul>
+    <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-color='#95e6ff'>Bob OOO</li>
+    <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-color='#ff95c0'>Meeting</li>
+    <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-color='#97ffb1'>Lunch</li>
+    <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-color='#ff95c0'>
+      Code review
+      <p>Gotta find out if everyone is happy with this timeline component.<p>
+    </li>
+  </ul>
+</div>
+{% endhighlight %}
+
+Then just call without the data element:
+
+{% highlight javascript %}
+$('#hourly').timestack({ span: 'hour' });
+{% endhighlight %}
+
+The immediate text node under the `li` is used as the `title` property. Any child nodes (as in the `<p>` in the example), get pushed into a `content` property on the data object; that's useful when handling click events.
 
 ###Using Timestack with Twix
 
@@ -197,7 +192,7 @@ you to override the way Timestack renders time ranges at a lower level.
 The default implementation handles all the stuff about checking whether
 we're looking at days or years and formatting accordingly, so you're a
 bit on your own if you override it. But one great use case for this is using a third-party library to format
-the time ranges. For example, here's how to use Timestack with [Twix](https://github.com/icambron/twix.js):
+the time ranges. For example, here's how to use Timestack with [Twix](https://icambron.github.io/twix.js):
 
 {% highlight javascript %}
 $('#twix').timestack({
@@ -205,32 +200,15 @@ $('#twix').timestack({
 
   renderDates: function(item){
     return moment.twix(item.start, item.end).format({showDate: false})
-  }
+  },
+
+  data: [/*...*/]
 });
 {% endhighlight %}
 
-<script>
-$(function(){
-  $('#twix').timestack({
-    span: 'hour',
-  
-    renderDates: function(item){
-      return moment.twix(item.start, item.end).format({showDate: false})
-    }
-  });
-});
-</script>
+<div id='twix'></div>
 
-<div id='twix'> 
-  <ul>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-color='#95e6ff'>Bob OOO</li>
-    <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-color='#ff95c0'>Meeting</li>
-    <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-color='#97ffb1'>Lunch</li>
-    <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-color='#ff95c0'>Code review</li>
-  </ul>
-</div>
-
-Notice the more subtle formatting. You can see a full example of this [here](https://github.com/icambron/timestack/blob/master/examples/twix.html).
+Notice the more time subtle formatting. You can see a full example of this [here](https://github.com/icambron/timestack/blob/master/examples/twix.html).
 
 ##Credits
 

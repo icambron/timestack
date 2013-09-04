@@ -11,12 +11,113 @@
     <link rel='stylesheet' type='text/css' href='css/syntax.css'/>
     <script>
       $(function(){
-        $('#hourly').timestack({span: 'hour'});
-        $('#daily').timestack({span: 'day'});
+
+        var baseData = [
+          {
+            title: 'Bob OOO',
+            start: '2012-08-26T09:00',
+            end: '2012-08-26T17:00',
+            body: "<p>He's in the Bahamas or something.</p> <h2>Lucky bastard.</h2>",
+            color: 'rgb(149, 203, 255)'
+          },
+          {
+            title: 'Meeting',
+            start: '2012-08-26T09:00',
+            end: '2012-08-26T10:00',
+            color: 'rgb(255, 149, 192)'
+          },
+          {
+            title: 'Lunch',
+            start: '2012-08-26T12:00',
+            end: '2012-08-26T13:00',
+            body: "<p>Nom nom at <a href='http://www.cloverfoodlab.com/'>Clover</a>.</p>",
+            color: 'rgb(151, 255, 177)'
+          },
+          {
+            title: 'Code review',
+            start: '2012-08-26T12:30',
+            end: '2012-08-26T15:30',
+            body: "<p>Gotta find out if everyone is happy with this timeline component.<p>",
+            color: 'rgb(255, 149, 192)'
+          }
+        ];
+
+        $('#hourly').timestack({
+          span: 'hour',
+          data: baseData
+        });
+
+        $('#daily').timestack({
+          span: 'day',
+          data: [
+            {
+              title: 'Vacation',
+              start: '2012-08-26',
+              end: '2012-08-28',
+              color: '#97ffb1',
+            },
+            {
+              title: 'Convention',
+              start: '2012-08-15',
+              end: '2012-08-20',
+              color: '#ff95c0'
+            },
+            {
+              title: 'Meetings',
+              start: '2012-08-21',
+              end: '2012-08-25',
+              color: '#95e6ff'
+            },
+            {
+              title: 'Sprint',
+              start: '2012-08-07', 
+              end: '2012-08-16',
+              color: '#da98f1'
+            },
+            {
+              title: 'Sprint',
+              start: '2012-08-19',
+              end: '2012-08-26',
+              color: '#da98f1'
+            }
+          ]
+        });
+
         $('#clicky').timestack({
           span: 'month',
-          click: function(data){alert(data.title);}
+          click: function(data){alert(data.title);},
+          data: [
+            {
+              title: 'Spain',
+              start: '2012-08-15',
+              end: '2012-10-28',
+              color: '#f8f736'
+            },
+            {
+              title: 'France',
+              start: '2012-11-01',
+              end: '2013-02-28',
+              color: '#36f8dc'
+            },
+            {
+              title: 'Italy',
+              start: '2013-03-01',
+              end: '2013-04-30',
+              color: '#fbc253'
+            }
+          ]
         });
+
+        $('#twix').timestack({
+          span: 'hour',
+        
+          renderDates: function(item){
+            return moment.twix(item.start, item.end).format({showDate: false})
+          },
+
+          data: baseData
+        });
+
       });
     </script>
   </head>
