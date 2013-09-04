@@ -15,7 +15,7 @@ Released under the MIT license, license here: https://github.com/icambron/timest
       timestack: function(options) {
         var between, defaults, findEnds, parseDom, useData;
         defaults = {
-          click: null,
+          click: function() {},
           parse: function(s) {
             return moment(s);
           },
@@ -64,7 +64,8 @@ Released under the MIT license, license here: https://github.com/icambron/timest
                   return this.nodeType === 3;
                 }).remove().text(),
                 color: $li.attr('data-color'),
-                li: $li
+                li: $li,
+                content: $li.children().remove()
               };
             })
           ];
@@ -128,14 +129,13 @@ Released under the MIT license, license here: https://github.com/icambron/timest
             i = items[_i];
             $li = i.li;
             if (!$li) {
-              $li = $("<li></li>").html(i.body);
+              $li = $("<li></li>");
               $ul.append($li);
             }
             i.timeDisplay = options.renderDates(i);
             timespan = $("<em>(" + i.timeDisplay + ")</em>").addClass('timestack-time');
             titlespan = $("<span>" + i.title + " </span>").addClass("timestack-title");
             labelspan = $("<span></span>").addClass('timestack-label').append(titlespan).append(timespan);
-            i.content = $li.children().wrapAll("<div class='timestack-content'></div>").parent().hide().children();
             width = ((i.end - i.start) / diff * 100).toFixed(2);
             offset = ((i.start - earliest) / diff * 100).toFixed(2);
             $li.prepend(labelspan).css("margin-left", "" + offset + "%").css("width", "" + width + "%").click((function(i) {

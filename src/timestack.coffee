@@ -10,7 +10,7 @@ do (jQuery) ->
   $.fn.extend
     timestack: (options) ->
       defaults =
-        click: null
+        click: ->
         parse: (s) -> moment(s)
         renderDates: (item) ->
           dateFormat = @dateFormats[options.span]
@@ -49,6 +49,7 @@ do (jQuery) ->
               title: $li.contents().filter(-> @nodeType == 3).remove().text()
               color: $li.attr('data-color')
               li: $li
+              content: $li.children().remove()
             }
         ]
 
@@ -107,7 +108,7 @@ do (jQuery) ->
           $li = i.li
 
           unless $li
-            $li = $("<li></li>").html i.body
+            $li = $("<li></li>")
             $ul.append $li
 
           i.timeDisplay = options.renderDates i
@@ -119,13 +120,6 @@ do (jQuery) ->
             .addClass('timestack-label')
             .append(titlespan)
             .append(timespan)
-
-          i.content = $li
-            .children()
-            .wrapAll("<div class='timestack-content'></div>")
-            .parent()
-            .hide()
-            .children()
 
           width = ((i.end - i.start)/diff * 100).toFixed(2)
           offset = ((i.start - earliest)/diff * 100).toFixed(2)

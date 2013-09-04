@@ -11,10 +11,17 @@
         background-color: #f7f7f7;
       }
     </style>
-    
+
     <script>
       $(function(){
-        $('#timeline').timestack({span: 'hour'});
+        $('#timeline').timestack({
+          span: 'hour',
+          click: function(data){
+            $('#title').text(data.title);
+            $('#dates').text(data.timeDisplay);
+            $('#content').empty().append(data.content);
+          }
+        });
       });
     </script>
   </head>
@@ -26,8 +33,16 @@
         <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-color='#95e6ff'>Bob OOO</li>
         <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-color='#ff95c0'>Meeting</li>
         <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-color='#97ffb1'>Lunch</li>
-        <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-color='#ff95c0'>Code review</li>
+        <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-color='#ff95c0'>
+          Code review
+          <p>Gotta find out if everyone is happy with this timeline component.<p>
+        </li>
       </ul>
+    </div>
+    <div id='display'>
+      <h1 id='title'></h1>
+      <h3 id='dates'></h3>
+      <div id='content'/>
     </div>
   </body>
 </html>
