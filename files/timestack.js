@@ -84,8 +84,8 @@ Released under the MIT license, license here: https://github.com/icambron/timest
           for (_i = 0, _len = items.length; _i < _len; _i++) {
             i = items[_i];
             i.start = options.parse(i.start);
-            i.tilNow = !i.end;
-            i.end = options.parse(i.end);
+            i.tilNow = i.end == null;
+            i.end = i.tilNow ? moment() : options.parse(i.end);
             if (!(i.start <= i.end)) {
               throw 'Start times must be before end times';
             }

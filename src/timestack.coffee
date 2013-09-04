@@ -66,8 +66,8 @@ do (jQuery) ->
         for i in items
 
           i.start = options.parse(i.start)
-          i.tilNow = !i.end
-          i.end = options.parse(i.end)
+          i.tilNow = !i.end?
+          i.end = if i.tilNow then moment() else options.parse(i.end)
 
           throw 'Start times must be before end times' unless i.start <= i.end
 
