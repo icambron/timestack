@@ -3,7 +3,6 @@
   <head>
     <script type='text/javascript' src='../vendor/jquery/jquery.min.js'></script>
     <script type='text/javascript' src='../vendor/moment/moment.js'></script>
-    <script type='text/javascript' src='../vendor/twix/bin/twix.js'></script>
     <script type='text/javascript' src='../files/timestack.js'></script>
 
     <link rel='stylesheet' type='text/css' href='../files/timestack.css'/>
@@ -22,9 +21,6 @@
             $('#title').text(data.title);
             $('#dates').text(data.timeDisplay);
             $('#content').empty().append(data.content);
-          },
-          renderDates: function(item){
-            return moment(item.start).twix(item.end).format({showDate: false})
           },
           data: [
             {
@@ -59,11 +55,18 @@
         });
       });
     </script>
+    <style>
+      #display {
+        padding-top: 10px;
+        clear: both;
+      }
+    </style>
   </head>
   <body>
-    <h3>Similar to <a href="simple.html">the simple example</a>, but notice the more subtle formatting of the time ranges.</h3>
+    <h3>You can click on events to see more info.</h3>
 
     <div id='timeline'></div>
+
     <div id='display'>
       <h1 id='title'></h1>
       <h3 id='dates'></h3>

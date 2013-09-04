@@ -34,6 +34,47 @@ do (jQuery) ->
 
       throw "#{options.span} is not a valid span option" unless ['year', 'month', 'day', 'hour'].indexOf(options.span) > -1
 
+      parseDom = ($obj) ->
+        $ul = $obj.children('ul:not(.timestack-events)')
+
+        return [] if $ul.length == 0
+
+        [
+          $ul
+          $ul.children('li').map ->
+            $li = $ @
+            i = {
+              start: $li.attr 'data-start'
+              end: $li.attr 'data-end'
+              title: $li.contents().filter(-> @nodeType == 3).remove().text()
+              color: $li.attr('data-color')
+              li: $li
+            }
+        ]
+
+      useData = ($obj, items) ->
+        $obj.empty()
+        $ul = $("<ul></ul>")
+        $obj.append $ul
+        [$ul, items]
+
+      findEnds = (items) ->
+        earliest = null
+        latest = null
+
+        for i in items
+
+          i.start = options.parse(i.start)
+          i.tilNow = !i.end
+          i.end = options.parse(i.end)
+
+          throw 'Start times must be before end times' unless i.start <= i.end
+
+          earliest = i.start.clone() unless earliest && earliest < i.start
+          latest = i.end.clone() unless latest && latest > i.end
+
+        [earliest, latest]
+
       between = (start, end) ->
         results = []
         index = start.clone().startOf(options.span)
@@ -45,41 +86,29 @@ do (jQuery) ->
       @each ->
         $obj = $ @
 
-        $ul = $obj.children('ul')
+        [$ul, items] = parseDom $obj
+        [$ul, items] = useData($obj, options.data) unless $ul
+
+        throw "Timestack requires either a data object or a UL for progressive enhancement." unless $ul
+
         $ul
           .css('width', options.width)
           .addClass('timestack-events')
 
-        earliest = null
-        latest = null
-
-        items = $ul.children('li').map ->
-          $li = $ @
-          endStr = $li.attr 'data-end'
-          i = {
-            tilNow: !endStr
-            start: options.parse($li.attr 'data-start')
-            end: options.parse endStr
-            title: $li.contents().filter(-> @nodeType == 3).remove().text()
-            color: $li.attr('data-color')
-            li: $li
-          }
-
-          throw 'Start times must be before end times' unless i.start <= i.end
-
-          earliest = i.start.clone() unless earliest && earliest < i.start
-          latest = i.end.clone() unless latest && latest > i.end
-          i
+        [earliest, latest] = findEnds items
 
         earliest.startOf options.span
         unless latest.valueOf() == latest.clone().startOf(options.span).valueOf()
           latest.endOf options.span
 
-
         diff = latest - earliest
 
         for i in items
           $li = i.li
+
+          unless $li
+            $li = $("<li></li>").html i.body
+            $ul.append $li
 
           i.timeDisplay = options.renderDates i
 
@@ -109,6 +138,8 @@ do (jQuery) ->
 
           $li.css('background-color', i.color) if i.color
           $li.css('cursor', 'pointer') if options.click
+
+          $li.addClass(i.class) if i.class?
 
         dates = between earliest, latest
         width = (100/dates.length).toFixed(2) + "%"

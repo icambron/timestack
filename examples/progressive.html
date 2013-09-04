@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type='text/javascript' src='../vendor/jquery/jquery.min.js'></script>
+    <script type='text/javascript' src='../vendor/moment/moment.js'></script>
+    <script type='text/javascript' src='../files/timestack.js'></script>
+
+    <link rel='stylesheet' type='text/css' href='../files/timestack.css'/>
+    <style>
+      body {
+        background-color: #f7f7f7;
+      }
+    </style>
+    
+    <script>
+      $(function(){
+        $('#timeline').timestack({span: 'hour'});
+      });
+    </script>
+  </head>
+
+  <body>
+    <h3>Progressively enhancing an existing UL.</h3>
+    <div id='timeline'>
+      <ul>
+        <li data-start='2012-08-26T09:00' data-end='2012-08-26T17:00' data-color='#95e6ff'>Bob OOO</li>
+        <li data-start='2012-08-26T09:00' data-end='2012-08-26T10:30' data-color='#ff95c0'>Meeting</li>
+        <li data-start='2012-08-26T12:00' data-end='2012-08-26T13:00' data-color='#97ffb1'>Lunch</li>
+        <li data-start='2012-08-26T13:00' data-end='2012-08-26T14:30' data-color='#ff95c0'>Code review</li>
+      </ul>
+    </div>
+  </body>
+</html>
