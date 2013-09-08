@@ -111,9 +111,13 @@ Released under the MIT license, license here: https://github.com/icambron/timest
         return this.each(function() {
           var $intervals, $li, $obj, $ul, date, dates, diff, earliest, format, i, items, labelspan, latest, offset, timespan, titlespan, width, _i, _j, _len, _len1, _ref, _ref1, _ref2;
           $obj = $(this);
-          _ref = parseDom($obj), $ul = _ref[0], items = _ref[1];
-          if (!$ul) {
-            _ref1 = useData($obj, options.data), $ul = _ref1[0], items = _ref1[1];
+          if (options.data) {
+            _ref = useData($obj, options.data), $ul = _ref[0], items = _ref[1];
+          } else {
+            _ref1 = parseDom($obj), $ul = _ref1[0], items = _ref1[1];
+          }
+          if (items.length === 0) {
+            return;
           }
           if (!$ul) {
             throw "Timestack requires either a data object or a UL for progressive enhancement.";
@@ -136,8 +140,8 @@ Released under the MIT license, license here: https://github.com/icambron/timest
             timespan = $("<em>(" + i.timeDisplay + ")</em>").addClass('timestack-time');
             titlespan = $("<span>" + i.title + " </span>").addClass("timestack-title");
             labelspan = $("<span></span>").addClass('timestack-label').append(titlespan).append(timespan);
-            width = ((i.end - i.start) / diff * 100).toFixed(2);
-            offset = ((i.start - earliest) / diff * 100).toFixed(2);
+            width = ((i.end - i.start) / diff * 100).toFixed(3);
+            offset = ((i.start - earliest) / diff * 100).toFixed(3);
             $li.prepend(labelspan).css("margin-left", "" + offset + "%").css("width", "" + width + "%").click((function(i) {
               return function() {
                 return options.click(i);
@@ -154,7 +158,7 @@ Released under the MIT license, license here: https://github.com/icambron/timest
             }
           }
           dates = between(earliest, latest);
-          width = (100 / dates.length).toFixed(2) + "%";
+          width = (100 / dates.length).toFixed(3) + "%";
           format = options.intervalFormats[options.span];
           $intervals = $("<ul></ul>").addClass("intervals");
           for (_j = 0, _len1 = dates.length; _j < _len1; _j++) {

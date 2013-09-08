@@ -87,8 +87,12 @@ do (jQuery) ->
       @each ->
         $obj = $ @
 
-        [$ul, items] = parseDom $obj
-        [$ul, items] = useData($obj, options.data) unless $ul
+        if options.data
+          [$ul, items] = useData($obj, options.data) 
+        else
+          [$ul, items] = parseDom $obj 
+
+        return if items.length == 0
 
         throw "Timestack requires either a data object or a UL for progressive enhancement." unless $ul
 
@@ -121,8 +125,8 @@ do (jQuery) ->
             .append(titlespan)
             .append(timespan)
 
-          width = ((i.end - i.start)/diff * 100).toFixed(2)
-          offset = ((i.start - earliest)/diff * 100).toFixed(2)
+          width = ((i.end - i.start)/diff * 100).toFixed(3)
+          offset = ((i.start - earliest)/diff * 100).toFixed(3)
 
           $li
             .prepend(labelspan)
@@ -136,7 +140,7 @@ do (jQuery) ->
           $li.addClass(i.class) if i.class?
 
         dates = between earliest, latest
-        width = (100/dates.length).toFixed(2) + "%"
+        width = (100/dates.length).toFixed(3) + "%"
         format = options.intervalFormats[options.span]
         $intervals = $("<ul></ul>").addClass("intervals")
         for date in dates
