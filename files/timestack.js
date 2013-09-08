@@ -140,8 +140,8 @@ Released under the MIT license, license here: https://github.com/icambron/timest
             timespan = $("<em>(" + i.timeDisplay + ")</em>").addClass('timestack-time');
             titlespan = $("<span>" + i.title + " </span>").addClass("timestack-title");
             labelspan = $("<span></span>").addClass('timestack-label').append(titlespan).append(timespan);
-            width = ((i.end - i.start) / diff * 100).toFixed(3);
-            offset = ((i.start - earliest) / diff * 100).toFixed(3);
+            width = ((i.end - i.start) / diff * 100 - 0.01).toFixed(3);
+            offset = ((i.start - earliest) / diff * 100 - 0.01).toFixed(3);
             $li.prepend(labelspan).css("margin-left", "" + offset + "%").css("width", "" + width + "%").click((function(i) {
               return function() {
                 return options.click(i);
@@ -158,7 +158,7 @@ Released under the MIT license, license here: https://github.com/icambron/timest
             }
           }
           dates = between(earliest, latest);
-          width = (100 / dates.length).toFixed(3) + "%";
+          width = (100 / dates.length - 0.01).toFixed(3) + "%";
           format = options.intervalFormats[options.span];
           $intervals = $("<ul></ul>").addClass("intervals");
           for (_j = 0, _len1 = dates.length; _j < _len1; _j++) {
