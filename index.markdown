@@ -147,9 +147,9 @@ Timestack allows you to override a lot of its functionality. Here are the most c
   },
 
   intervalFormats: {                   //how to render the intervals for various spans. These are moment formatting tokens.
-    year: 'YYYY'
-    month: 'MMM YYYY'
-    day: 'MMM DD'
+    year: 'YYYY',
+    month: 'MMM YYYY',
+    day: 'MMM DD',
     hour: 'h:mm a'
   },
 
