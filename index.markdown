@@ -83,7 +83,7 @@ Timestack needs to know how long of time scales we're talking about. Use the `sp
 
 {% highlight javascript %}
 $('#timeline').timestack({
-  span: 'day', 
+  span: 'day',
   data: [/*...*/]
 });
 {% endhighlight %}
@@ -151,8 +151,8 @@ Timestack allows you to override a lot of its functionality. Here are the most c
     month: 'MMM YYYY'
     day: 'MMM DD'
     hour: 'h:mm a'
-  }
-  
+  },
+
   data: []
 }
 {% endhighlight %}
