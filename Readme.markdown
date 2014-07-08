@@ -27,6 +27,10 @@ To build just run
 make
 ```
 
+### Acknowledgements
+
+The CSS here is based on work by [Matt Bango](http:///mattbango.com); the original can be found [here](http://mattbango.com/notebook/web-development/pure-css-timeline/). It's distributed here under the MIT license with permission from Matt.
+
 ### License (MIT)
 
 Copyright (c) 2012 Isaac Cambron
