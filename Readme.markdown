@@ -3,8 +3,6 @@
 
 Timestack is a simple jQuery plugin for generating pretty, clickable timelines for the web.
 
-![timestack](http://dl.dropbox.com/u/25329021/Screenshots/hn9l.png)
-
 ### [Documentation](http://icambron.github.com/timestack)
 
 ### More info
