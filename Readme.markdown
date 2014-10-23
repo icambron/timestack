@@ -7,7 +7,7 @@ Timestack is a simple jQuery plugin for generating pretty, clickable timelines f
 
 ### More info
 
-Here's a [blog post](http://isaaccambron.com/blog/2012/12/25/introducing-fb-friends.html) about Timestack.
+Here's a [blog post](http://isaaccambron.com/blog/2012/08/27/introducing-timestack.html) about Timestack.
 
 ### Building/Contributing
 
